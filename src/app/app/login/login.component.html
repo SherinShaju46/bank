@@ -1,13 +1,14 @@
 <div class="w-50">
-  <h1 class="text-center ms-5 text-white mt-5" style="margin-top:10rem;">{{data}}</h1>
-  <form class="container w-50 p-3 mt-3 ms-5 text-center border" style="background-color: #7079cee6; border-radius: 20px;">
+  <h1 class="ms-5 text-white mt-5" style="margin-top:10rem;">{{data}}</h1>
+  <form class="container w-50 p-3 mt-5 ms-5 text-center border col-sm-8" style="background-color: #7079cee6; border-radius: 20px;">
       <div class="mt-2 p-2">
         <input
           type="text"
-          placeholder="Enter Account Number"
+          [placeholder]= "placeholderData"
           name="accno"
           required
           class="form-control"
+          (change)="unameChanged($event)"
         />
         <input
           type="password"
@@ -18,7 +19,7 @@
         />
       </div>
       <div class="mt-2 p-2 text-center text-white">
-        <button type="submit" style="background-color: #142263; border-radius: 20px;">Login</button>
+        <button (onClick)="login()" type="submit" style="background-color: #142263; border-radius: 20px;">Login</button>
         <h6>Don't have account? <strong> <a href="" class="text-white"> create account</a></strong></h6>
       </div>
   </form>

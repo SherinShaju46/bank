@@ -7,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit{
   data:string;
+  placeholderData ="Enter Account No"
   constructor(){
     this.data="your perfect banking partner"
   }
   ngOnInit(): void {
-    
+
+  }
+  login(){
+    alert("login clicked")
+  }
+
+  unameChanged(event:any){
+    console.log(event.target.value); 
   }
 }
