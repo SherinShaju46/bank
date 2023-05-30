@@ -8,7 +8,7 @@
           name="accno"
           required
           class="form-control"
-          (change)="unameChanged($event)"
+          #uname
         />
         <input
           type="password"
@@ -16,10 +16,11 @@
           name="password"
           required
           class="form-control"
+          #psw
         />
       </div>
       <div class="mt-2 p-2 text-center text-white">
-        <button (onClick)="login()" type="submit" style="background-color: #142263; border-radius: 20px;">Login</button>
+        <button (click)="login(uname, psw)" type="submit" style="background-color: #142263; border-radius: 20px;">Login</button>
         <h6>Don't have account? <strong> <a href="" class="text-white"> create account</a></strong></h6>
       </div>
   </form>
