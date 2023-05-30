@@ -8,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit{
   data:string;
   placeholderData ="Enter Account No"
+
+   //variables to bind data from html form
   uname: any;
   psw: any;
+
   constructor(){
     this.data="your perfect banking partner"
   }
@@ -17,12 +20,9 @@ export class LoginComponent implements OnInit{
 
   }
 
-  login(a: any, b:any){
-    this.uname= a.value
-    this.psw= b.value
+  login(){
     console.log(this.uname, this.psw);
-    alert("login clicked")
-
+    alert(this.uname)
   }
 
 }
