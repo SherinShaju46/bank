@@ -10,7 +10,16 @@ footer {
   text-align: center;
   font-size: 0.9rem;
   margin: auto;
-  position: absolute;
+  /* position: absolute; */
+  position: fixed;
   width: 100%;
   bottom: 0;
+}
+
+form{
+  transition: .5s ease-in-out;
+}
+
+form:hover{
+  transform: scale(1.03);
 }

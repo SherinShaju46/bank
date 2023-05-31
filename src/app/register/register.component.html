@@ -1,0 +1,35 @@
+<div class="w-50 p-5">
+    <form class="container w-50 p-3 mt-5 ms-5 text-center border col-sm-8" style="background-color: #7079cee6; border-radius: 20px;">
+        <div class="mt-2 p-2">
+          <input
+            type="text"
+            placeholder= "Enter Account Number"
+            id="a1"
+            name="accno"
+            required
+            class="form-control"
+          />
+          <input
+          type="text"
+          placeholder= "Enter Username"
+          id="u1"
+          name="uname"
+          required
+          class="form-control"
+        />
+          <input
+            type="password"
+            placeholder="Enter Password"
+            id="p1"
+            name="password"
+            required
+            class="form-control"
+          />
+        </div>
+        <div class="mt-2 p-2 text-center text-white">
+          <button (click)="register()" type="submit" style="background-color: #142263; border-radius: 20px;">Register</button>
+          <h6>already signed in? <strong routerLink="" class="text-white">login</strong></h6>
+        </div>
+    </form>
+  </div>
+  
