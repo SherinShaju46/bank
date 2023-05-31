@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../service/data.service';
 
 @Component({
   selector: 'app-login',
@@ -13,16 +14,17 @@ export class LoginComponent implements OnInit{
   uname: any;
   psw: any;
 
-  constructor(){
+  constructor(private ds: DataService){
     this.data="your perfect banking partner"
   }
+
   ngOnInit(): void {
 
   }
 
   login(){
     console.log(this.uname, this.psw);
-    alert(this.uname)
+    // alert(this.ds.sdata)
+    alert(`${this.ds.checkData()} ${this.ds.sdata }`)
   }
-
 }
