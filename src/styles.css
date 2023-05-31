@@ -5,3 +5,12 @@ body{
   background-attachment: fixed;
   background-size: 100% 100%;
 }
+
+footer {
+  text-align: center;
+  font-size: 0.9rem;
+  margin: auto;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
