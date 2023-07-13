@@ -1,16 +1,32 @@
 <div class="w-50 p-5">
   <!-- reactive form -->
-  <form [formGroup]="registerForm" (ngSubmit)="register()" class="container w-50 p-3 mt-5 ms-5 text-center border col-sm-8"
+  <form [formGroup]="registerForm" (ngSubmit)="register()"
+    class="container w-50 p-3 mt-5 ms-5 text-center border col-sm-8"
     style="background-color: #7079cee6; border-radius: 20px;">
     <div class="mt-2 p-2">
       <input type="text" placeholder="Enter Account Number" id="a1" name="accno" required class="form-control"
         formControlName="acno" />
+      <div *ngIf="(this.registerForm.get('acno')?.errors) && (this.registerForm.get('acno')?.touched)">
+        <h6 class="text-danger">must contain numbers only</h6>
+      </div>
       <input type="text" placeholder="Enter Username" id="u1" name="uname" required class="form-control"
-      formControlName="uname" />
+        formControlName="uname" />
+      <div *ngIf="(this.registerForm.get('uname')?.errors) && (this.registerForm.get('uname')?.touched)">
+        <h6 class="text-danger">must contain character only</h6>
+      </div>
       <input type="password" placeholder="Enter Password" id="p1" name="password" required class="form-control"
-      formControlName="psw" />
+        formControlName="psw" />
+      <div *ngIf="(this.registerForm.get('psw')?.errors) && (this.registerForm.get('psw')?.touched)">
+        <h6 class="text-danger">only characters and numbers allowed</h6>
+      </div>
       <input type="password" placeholder="Enter Confirm Password" id="p2" name="cpassword" required class="form-control"
-      formControlName="cpsw" />
+        formControlName="cpsw" />
+    </div>
+    <div *ngIf="(this.registerForm.get('cpsw')?.errors) && (this.registerForm.get('cpsw')?.touched)">
+      <h6 class="text-danger">only characters and numbers allowed</h6>
+    </div>
+    <div *ngIf="(this.registerForm.value.psw!==this.registerForm.value.cpsw) && (this.registerForm.get('cpsw')?.touched)">
+      <h6 class="text-danger">confirm password should be same as password</h6>
     </div>
     <div class="mt-2 p-2 text-center text-white">
       <button type="submit" style="background-color: #142263; border-radius: 20px;">Register</button>
