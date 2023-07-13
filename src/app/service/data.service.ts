@@ -5,9 +5,9 @@ import { Injectable } from '@angular/core';
 })
 export class DataService {
   constructor() { }
-  //register api
+  //register api -- post
 
-  //login api
+  //login api -- get
 
 }
 
