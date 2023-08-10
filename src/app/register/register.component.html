@@ -19,7 +19,7 @@
       <div *ngIf="(this.registerForm.get('psw')?.errors) && (this.registerForm.get('psw')?.touched)">
         <h6 class="text-danger">only characters and numbers allowed</h6>
       </div>
-      <input type="password" placeholder="Enter Confirm Password" id="p2" name="cpassword" required class="form-control"
+      <input type="password" placeholder="Confirm Password" id="p2" name="cpassword" required class="form-control"
         formControlName="cpsw" />
     </div>
     <div *ngIf="(this.registerForm.get('cpsw')?.errors) && (this.registerForm.get('cpsw')?.touched)">
@@ -28,6 +28,9 @@
     <div *ngIf="(this.registerForm.value.psw!==this.registerForm.value.cpsw) && (this.registerForm.get('cpsw')?.touched)">
       <h6 class="text-danger">confirm password should be same as password</h6>
     </div>
+    <!-- <div *ngIf="pswCheck">
+      <h6 class="text-danger">password doesn't match</h6>
+    </div> -->
     <div class="mt-2 p-2 text-center text-white">
       <button type="submit" style="background-color: #142263; border-radius: 20px;">Register</button>
       <h6>already signed in? <strong routerLink="" class="text-white">login</strong></h6>

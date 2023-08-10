@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DataService } from '../service/data.service';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,8 @@ export class RegisterComponent {
   // acno: any;
   // uname: any;
   // psw: any;
-  constructor(private route: Router, private fb: FormBuilder) { }
+  pswCheck:any= false;
+  constructor(private route: Router, private fb: FormBuilder, private ds: DataService) { }
 
   //forms model
   registerForm = this.fb.group({
@@ -25,11 +27,24 @@ export class RegisterComponent {
   register() {
     if (this.registerForm.valid) {
       if(this.registerForm.value.psw==this.registerForm.value.cpsw){
-        alert("register works")
-        this.route.navigateByUrl("home")
+        //asynchronous function in TS
+        this.ds.registerApi(
+          this.registerForm.value.acno,
+          this.registerForm.value.uname,
+          this.registerForm.value.psw
+          ).subscribe((result:any)=> {
+            console.log(result);
+            alert(result.message)
+            this.route.navigateByUrl("")
+          },
+          result => {
+            alert(result.error.message)
+            this.route.navigateByUrl("")
+          })
       }
       else{
-        alert("password doesn't match")
+        this.pswCheck=true
+        // alert("password doesn't match")
       }
     }
     else {
@@ -47,21 +62,3 @@ export class RegisterComponent {
 // console.log(modelPath.uname);
 // console.log(modelPath.psw);
 // console.log(modelPath.cpsw);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-33
