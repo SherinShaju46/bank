@@ -12,27 +12,26 @@
                 officiis. Repellat ratione alias iure perferendis vero inventore ad voluptatem esse illum
                 exercitationem?
                 Quas
-                similique dolore ducimus sint consectetur?Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi,
-                similique
-                veniam cumque ducimus laborum ab assumenda minima debitis. Deleniti quam repudiandae possimus magnam
-                nulla
-                sunt
                 cumque mollitia voluptatibus quos maxime.</p>
         </div>
 
         <div class="col-6">
             <ul>
                 <li class="border border-0 mb-5">
-                    <button id="b" (click)="getBalance()" class="btn btnclr text-white w-75 btn-lg" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">Balance
+                    <button id="b" (click)="getBalance()" class="btn btnclr text-white w-75 btn-lg"
+                        data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+                        aria-controls="offcanvasExample">Balance
                         Enquiry
                     </button>
                 </li>
                 <li class="border border-0 mb-5">
-                    <button id="b" class="btn btnclr text-white w-75 btn-lg text-white">Balance</button>
+                    <button id="b" (click)="viewAccount()" type="button"
+                        class="btn btnclr text-white w-75 btn-lg text-white" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">View Account Details</button>
                 </li>
                 <li class="border border-0 mb-5">
-                    <button id="b" class="btn btnclr text-white w-75 btn-lg">Balance</button>
+                    <button id="b" class="btn btnclr text-white w-75 btn-lg" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal1">Transfer Fund</button>
                 </li>
                 <li class="border border-0 mb-5">
                     <button id="b" class="btn btnclr text-white w-75 btn-lg">Balance</button>
@@ -48,25 +47,61 @@
     </div>
 
     <!-- //offcanvas -->
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-        <div class="offcanvas-header">
+    <div style="background-color: rgb(204, 199, 199);" class="offcanvas offcanvas-start" tabindex="-1"
+        id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header text-white" style="background-color: #142263;">
             <h5 class="offcanvas-title" id="offcanvasExampleLabel">Balance Enquiry</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
             <div>
-                Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images,
-                lists, etc.
+                <h5>Hey {{user}},</h5>
+                <h6>Account Number : <strong>{{acno}}</strong></h6>
+                <h6>Current account balance is Rs.<strong>{{balance}}</strong></h6>
             </div>
-            <div class="dropdown mt-3">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                    Dropdown button
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-white" style="background-color: #142263;">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Account Details</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4>{{user}}</h4>
+                    <p>Account Number : <strong>{{userDetail.acno}}</strong></p>
+                    <p>Account Balance: <strong>{{userDetail.balance}}</strong></p>
+                </div>
+                <div class="modal-footer mt-3" style="background-color: #142263;">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-white" style="background-color: #142263;">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Quick Transfer</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img class="w-100" style="height: 200px;" src="https://i.postimg.cc/5Nh8rf7n/transfer.png" alt="transfer">
+                    <form [formGroup]="moneyTransferForm" action="">
+                        <input formControlName="toAcno" type="text" class="form-control mt-3" id="f1" name="toacno" placeholder="Enter Account Number">
+                        <input formControlName="amount" type="text" class="form-control mt-2" id="f2" name="amnt" placeholder="Enter Amount">
+                        <input formControlName="psw" type="password" class="form-control mt-2" id="f3" name="pswd" placeholder="Enter Password">
+                        <button type="button" class="btn btn-success mt-4">Transfer</button>
+
+                    </form>
+                </div>
+                <div class="modal-footer mt-3" style="background-color: #142263;">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
