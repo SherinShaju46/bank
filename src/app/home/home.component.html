@@ -34,10 +34,12 @@
                         data-bs-target="#exampleModal1">Transfer Fund</button>
                 </li>
                 <li class="border border-0 mb-5">
-                    <button id="b" class="btn btnclr text-white w-75 btn-lg">Balance</button>
+                    <a href="/transaction">
+                        <button id="b" class="btn btnclr text-white w-75 btn-lg">Account Statement</button>
+                    </a>
                 </li>
                 <li class="border border-0 mb-5">
-                    <button id="b" class="btn btnclr text-white w-75 btn-lg">Balance</button>
+                    <button id="b" class="btn btnclr text-white w-75 btn-lg">Delete Account</button>
                 </li>
             </ul>
         </div>
@@ -70,10 +72,11 @@
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Account Details</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body text-center">
                     <h4>{{user}}</h4>
-                    <p>Account Number : <strong>{{userDetail.acno}}</strong></p>
-                    <p>Account Balance: <strong>{{userDetail.balance}}</strong></p>
+                    <img src="https://i.postimg.cc/MH3JYym6/userr.jpg" style="height: 100px; width: 150px;" alt="pro_pic">
+                    <p>Account Number : <strong>{{acno}}</strong></p>
+                    <p>Account Balance: <strong>{{balance}}</strong></p>
                 </div>
                 <div class="modal-footer mt-3" style="background-color: #142263;">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -82,6 +85,7 @@
         </div>
     </div>
 
+    <!-- //transfer -->
     <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -90,19 +94,39 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                    <img class="w-100" style="height: 200px;" src="https://i.postimg.cc/5Nh8rf7n/transfer.png" alt="transfer">
-                    <form [formGroup]="moneyTransferForm" action="">
-                        <input formControlName="toAcno" type="text" class="form-control mt-3" id="f1" name="toacno" placeholder="Enter Account Number">
-                        <input formControlName="amount" type="text" class="form-control mt-2" id="f2" name="amnt" placeholder="Enter Amount">
-                        <input formControlName="psw" type="password" class="form-control mt-2" id="f3" name="pswd" placeholder="Enter Password">
-                        <button type="button" class="btn btn-success mt-4">Transfer</button>
+                    <img class="w-100" style="height: 200px;" src="https://i.postimg.cc/5Nh8rf7n/transfer.png"
+                        alt="transfer">
+                    <form (ngSubmit)="fundTransfer()" [formGroup]="moneyTransferForm" action="">
+                        <input formControlName="toAcno" type="text" class="form-control mt-3" id="f1" name="toacno"
+                            placeholder="Enter Account Number">
+                        <div
+                            *ngIf="(this.moneyTransferForm.get('toAcno')?.errors) && (this.moneyTransferForm.get('toAcno')?.touched)">
+                            <h6 class="text-danger">only numbers allowed</h6>
+                        </div>
 
+                        <input formControlName="amount" type="text" class="form-control mt-2" id="f2" name="amnt"
+                            placeholder="Enter Amount">
+                        <div
+                            *ngIf="(this.moneyTransferForm.get('amount')?.errors) && (this.moneyTransferForm.get('amount')?.touched)">
+                            <h6 class="text-danger">only numbers allowed</h6>
+                        </div>
+
+                        <input formControlName="psw" type="password" class="form-control mt-2" id="f3" name="pswd"
+                            placeholder="Enter Password">
+                        <div
+                            *ngIf="(this.moneyTransferForm.get('psw')?.errors) && (this.moneyTransferForm.get('psw')?.touched)">
+                            <h6 class="text-danger">only characters and numbers allowed</h6>
+                        </div>
+
+                        <button type="submit" class="btn btn-success mt-4">Transfer</button>
                     </form>
                 </div>
-                <div class="modal-footer mt-3" style="background-color: #142263;">
+                <div class="modal-footer mt-3 text-center" style="background-color: #142263;">
+                    <p [ngClass]="tStatus?'s1':'s2'">{{transactionMsg}}</p>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
+
 </div>
