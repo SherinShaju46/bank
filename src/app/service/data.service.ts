@@ -70,5 +70,9 @@ export class DataService {
     return this.http.get('http://localhost:3000/transaction/' + acno, this.getToken())
   }
 
+  deleteAccount(acno: any){
+    return this.http.delete('http://localhost:3000/deleteacc/'+ acno, this.getToken())
+  }
+
 }
 

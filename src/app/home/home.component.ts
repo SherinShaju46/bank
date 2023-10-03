@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   transactionMsg: any
   //for applying ngClass
   tStatus: any
+  dAcno: any
 
   constructor(private router: Router, private ds: DataService, private fb: FormBuilder, private datePipe: DatePipe) { }
 
@@ -81,20 +82,36 @@ export class HomeComponent implements OnInit {
           result => {
             console.log(result.error.message);
             this.transactionMsg = result.error.message + '!'
-            this.tStatus= false
+            this.tStatus = false
           })
       }
     }
     else {
       this.transactionMsg = "invalid form..!"
-      this.tStatus= false
+      this.tStatus = false
     }
+  }
+
+  deleteClick() {
+    this.dAcno = localStorage.getItem('currentAcno')
+  }
+
+  noDelete(){
+    this.dAcno= ""
+  }
+
+  yesDelete(event: any){
+    this.ds.deleteAccount(event).subscribe((result: any) => {
+      alert(result.message)
+      this.logout()
+    })
   }
 
   //logout
   logout() {
     localStorage.removeItem("currentAcno")
     localStorage.removeItem('currentUser')
+    localStorage.removeItem('token')
     this.router.navigateByUrl("")
   }
 }

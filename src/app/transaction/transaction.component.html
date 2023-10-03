@@ -10,13 +10,22 @@
     <h3 class="fs-4">{{date | date: 'medium' }}</h3>
     <hr>
   </div>
-  <div class="col-7">
-    <img src="" alt="">
+  <div class="col-7 text-end">
+    <button class="btn btn-success mt-5 me-5" onclick="exportPdf()" style="width: 150px;">Export As PDF</button>
   </div>
 </div>
 
 <div class="row">
-  <table class="table table-striped" style="background-color: rgba(112, 108, 191, 0.963);">
+  <div class="text-center text-white mb-2">
+    <!-- <h5>Filter</h5> -->
+    <button class="btn btn-secondary me-2" (click)="filterTrans('')" style="width: 250px;">ALL</button>
+    <button class="btn btn-secondary me-2" (click)="filterTrans('CREDIT')" style="width: 250px;">CREDIT</button>
+    <button class="btn btn-secondary" (click)="filterTrans('DEBIT')" style="width: 250px;">DEBIT</button>
+  </div>
+</div>
+
+<div class="row text-center mb-5">
+  <table class="container w-75 table table-striped mb-5 " style="background-color: rgba(112, 108, 191, 0.963);">
     <thead>
       <tr class="text-center">
         <th scope="col">#</th>
@@ -28,7 +37,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="text-center" *ngFor="let i of transactions; let n=index;">
+      <tr class="text-center" *ngFor="let i of transactions | filter : transactionType : 'type'; let n=index;">
         <td>{{n+1}}</td>
         <td>{{i.type}}</td>
         <td>{{i.amount}}</td>

@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { DatePipe } from '@angular/common';
 import { TransactionComponent } from './transaction/transaction.component';
 import { DeleteComponent } from './delete/delete.component';
+import { FilterPipe } from './pipes/filter.pipe';
 //root module
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { DeleteComponent } from './delete/delete.component';
     RegisterComponent,
     HomeComponent,
     TransactionComponent,
-    DeleteComponent
+    DeleteComponent,
+    FilterPipe,
   ],
   imports: [ 
     BrowserModule,

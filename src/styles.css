@@ -23,3 +23,8 @@ form{
 form:hover{
   transform: scale(1.03);
 }
+
+.toHide{
+  /* opacity: 0; */
+  display: none;
+}

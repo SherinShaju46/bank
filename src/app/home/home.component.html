@@ -15,6 +15,7 @@
                 cumque mollitia voluptatibus quos maxime.</p>
         </div>
 
+
         <div class="col-6">
             <ul>
                 <li class="border border-0 mb-5">
@@ -38,17 +39,26 @@
                         <button id="b" class="btn btnclr text-white w-75 btn-lg">Account Statement</button>
                     </a>
                 </li>
-                <li class="border border-0 mb-5">
-                    <button id="b" class="btn btnclr text-white w-75 btn-lg">Delete Account</button>
+                <li [ngClass]="dAcno?'toHide': ''" class="border border-0 mb-5">
+                    <button id="b" class="btn btnclr text-white w-75 btn-lg" (click)="deleteClick()">Delete Account</button>
                 </li>
+
+
+                <!-- child component -->
+
+                <app-delete (onDelete)="yesDelete($event)" (onCancel)="noDelete()" [childAcno]="dAcno"></app-delete>
+
+
             </ul>
         </div>
         <div class="fixed-bottom text-end pb-5 pe-3">
-            <button (click)="logout()" class="btn btn-warning mb-5">logout</button>
+            <button (click)="logout()" class="btn btn-warning mb-5 me-5">logout</button>
         </div>
     </div>
 
-    <!-- //offcanvas -->
+
+    <!-- //offcanvas to show balance -->
+
     <div style="background-color: rgb(204, 199, 199);" class="offcanvas offcanvas-start" tabindex="-1"
         id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header text-white" style="background-color: #142263;">
@@ -64,7 +74,9 @@
         </div>
     </div>
 
-    <!-- Modal -->
+
+    <!-- View Modal -->
+
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -85,7 +97,9 @@
         </div>
     </div>
 
+
     <!-- //transfer -->
+
     <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
